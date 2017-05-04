@@ -32,6 +32,8 @@ public final class GFcache<T> {
 				if (val1 != null){
 					map.remove(val1.key);
 				}
+			}else{
+				return;
 			}
 		}
 	}
