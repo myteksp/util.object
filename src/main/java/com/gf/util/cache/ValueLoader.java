@@ -1,5 +1,7 @@
 package com.gf.util.cache;
 
-public interface ValueLoader<T> {
+import java.io.Serializable;
+
+public interface ValueLoader<T> extends Serializable{
 	T load();
 }

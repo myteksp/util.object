@@ -1,9 +1,12 @@
 package com.gf.util.cache;
 
+import java.io.Serializable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public final class GFcache<T> {
+public final class GFcache<T> implements Serializable{
+	private static final long serialVersionUID = -145114832439641933L;
+
 	private final long keepFor;
 	
 	private final ConcurrentLinkedQueue<ValueBundle<T>> queue;
