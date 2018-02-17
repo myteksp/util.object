@@ -38,9 +38,7 @@ public final class ObjectAccessor {
 			fieldsMap.put(field.getName(), field);
 	}
 
-	private final Object getField(final String name, 
-			final Object object){
-
+	private final Object getField(final String name, final Object object){
 		if (name == null)
 			return object;
 
