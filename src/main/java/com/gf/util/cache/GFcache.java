@@ -1,10 +1,9 @@
 package com.gf.util.cache;
 
-import java.io.Serializable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public final class GFcache<T> implements Serializable{
+public final class GFcache<T> implements Cache<T>{
 	private static final long serialVersionUID = -145114832439641933L;
 
 	private final long keepFor;
@@ -18,10 +17,12 @@ public final class GFcache<T> implements Serializable{
 		this.map = new ConcurrentHashMap<String, ValueBundle<T>>();
 	}
 	
-	public final int size(){
+	@Override
+	public final int size() {
 		return map.size();
 	}
 	
+	@Override
 	public final void clearExpired(){
 		final long time = System.currentTimeMillis();
 		for(;;){
@@ -41,6 +42,7 @@ public final class GFcache<T> implements Serializable{
 		}
 	}
 	
+	@Override
 	public final T get(final String key, final ValueLoader<T> loader){
 		final ValueBundle<T> res = map.get(key);
 		if (res == null){
