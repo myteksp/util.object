@@ -28,6 +28,9 @@ public final class GfSizeCache<T> implements Cache<T>{
 
 	@Override
 	public final void clearExpired() {
+		if (size() < maxSize)
+			return;
+		
 		final ArrayList<Entry<String, ValueBundle<T>>> list = new ArrayList<Entry<String, ValueBundle<T>>>(map.size() + 10);
 		for(final Entry<String, ValueBundle<T>> e : map.entrySet()) 
 			list.add(e);
